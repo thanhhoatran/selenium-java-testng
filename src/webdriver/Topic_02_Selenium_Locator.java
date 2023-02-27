@@ -10,7 +10,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_01_Check_Environment {
+public class Topic_02_Selenium_Locator {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir"); //đường dẫn đến thư mục Project
 	String osName = System.getProperty("os.name");
@@ -26,22 +26,22 @@ public class Topic_01_Check_Environment {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("https://www.facebook.com/");
+		driver.get("");
 	}
 
 	@Test
-	public void TC_01_Url() {
-		Assert.assertEquals(driver.getCurrentUrl(), "https://www.facebook.com/");
+	public void TC_01_() {
+		
 	}
 
 	@Test
-	public void TC_02_Logo() {
-		Assert.assertTrue(driver.findElement(By.cssSelector("img.fb_logo")).isDisplayed());
+	public void TC_02_() {
+		
 	}
 
 	@Test
-	public void TC_03_Form() {
-		Assert.assertTrue(driver.findElement(By.xpath("//form[@data-testid='royal_login_form']")).isDisplayed());
+	public void TC_03_() {
+		
 	}
 
 	@AfterClass
