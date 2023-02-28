@@ -26,22 +26,49 @@ public class Topic_02_Selenium_Locator {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
-		driver.get("");
+		driver.get("https://www.demo.nopcommerce.com/register");
 	}
 
 	@Test
-	public void TC_01_() {
-		
+	public void TC_01_ID() {
+		driver.findElement(By.id("FirstName")).sendKeys("Automation");
 	}
 
 	@Test
-	public void TC_02_() {
+	public void TC_02_Class() {
+		driver.get("https://www.demo.nopcommerce.com/search");
 		
+		driver.findElement(By.className("search-text")).sendKeys("Macbook");
 	}
 
 	@Test
-	public void TC_03_() {
+	public void TC_03_Name() {
+		driver.findElement(By.name("advs")).click();
+	}
+	@Test
+	public void TC_04_TagName() {
+		System.out.println(driver.findElements(By.tagName("input")).size());
+	}
+	@Test
+	public void TC_05_LinkText() {
+		//linkText: tuyệt đối
+		driver.findElement(By.linkText("Addresses")).click();
 		
+		//partialLinkText: tương đối
+		driver.findElement(By.partialLinkText("vendor ")).click();
+
+	}
+	@Test
+	public void TC_06_Css() {
+		driver.get("https://www.demo.nopcommerce.com/register");
+		driver.findElement(By.cssSelector("input#FirstName")).sendKeys("Selenium");
+		driver.findElement(By.cssSelector("input[id='LastName']")).sendKeys("Locator");
+	}
+	@Test
+	public void TC_07_Xpath() {
+		driver.get("https://www.demo.nopcommerce.com/register");
+		driver.findElement(By.xpath("//input[@id='FirstName']")).sendKeys("Selenium");
+		driver.findElement(By.xpath("//input[@id='LastName']")).sendKeys("Locator");
 	}
 
 	@AfterClass
