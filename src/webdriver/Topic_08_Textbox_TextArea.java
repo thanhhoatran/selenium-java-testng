@@ -103,16 +103,7 @@ public class Topic_08_Textbox_TextArea {
 		sleepInSecond(3);
 		
 	}
-
-	@Test
-	public void TC_02_Verify_Employee() {
-		
-	}
-
-	@Test
-	public void TC_03_() {
-		
-	}
+	
 	public void sleepInSecond(long timeInSecond) {
 		try {
 			Thread.sleep(timeInSecond * 1000);
