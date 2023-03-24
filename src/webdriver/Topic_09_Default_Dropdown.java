@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 //Phím tắt: command+shift+O => tự động import/remove thư viện
 // command+shift+f => format code
 
-public class Topic_09_Deffault_Dropdown {
+public class Topic_09_Default_Dropdown {
 	WebDriver driver;
 	Select select;
 	String projectPath = System.getProperty("user.dir"); // đường dẫn đến thư mục Project
