@@ -1,5 +1,6 @@
 package webdriver;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -14,8 +15,10 @@ import org.testng.annotations.Test;
 
 public class Topic_16_Popup {
 	WebDriver driver;
+	Random rand = new Random();
 	String projectPath = System.getProperty("user.dir"); //đường dẫn đến thư mục Project
 	String osName = System.getProperty("os.name");
+	String emailAddress = "testdemo" + rand.nextInt(99999) + "@gmail.com";
 
 	@BeforeClass
 	public void beforeClass() {
@@ -97,6 +100,30 @@ public class Topic_16_Popup {
 		Assert.assertEquals(driver.findElements(createAccountPopup).size(), 1);
 
 		driver.findElement(By.xpath("//div[text()='Sign Up']/parent::div/preceding-sibling::img")).click();
+	}
+	
+	@Test
+	public void TC_05_Random_In_DOM() {
+		driver.get("https://www.javacodegeeks.com/");
+		
+		By lePopup = By.cssSelector("div.lepopup-popup-container>div:not([style^='display:none']");
+		
+		// Vì luon có trong DOM nên có thể dùng hàm isDisplayed() để kiểma
+		
+		if(driver.findElement(lePopup).isDisplayed()){
+			//Nhap email
+			driver.findElement(By.cssSelector("div.lepopup-input>input")).sendKeys(emailAddress);
+			driver.findElement(By.cssSelector("a[class='lepopup-button lepopup-button-zoom-out ']")).click();
+			
+			//Verify
+			Assert.assertTrue(driver.findElement(By.cssSelector("div.lepopup-element-html-content>p")).getText().contains("Your sign-up request was successful. We will contact you shortly."));
+
+			//Dongs popup -> Qua step tiep theo
+			// Sau 5s se tu close popup
+		}
+		driver.findElement(By.cssSelector("input#s")).sendKeys("Your sign-up request was successful. We will contact you shortly. Please");
+		driver.findElement(By.cssSelector("button.search-button")).click();
+		sleepInSecond(3);
 	}
 	
 	public void sleepInSecond(long timeInSecond) {
